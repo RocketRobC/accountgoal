@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Goals</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Startdate</th>
+      <th>Enddate</th>
+      <th>Name</th>
+      <th>Details</th>
+      <th>Complete</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+        <td><%= goal.startdate.strftime("%v") %></td>
+        <td><%= goal.enddate.strftime("%v") %></td>
+        <td><%= goal.name %></td>
+        <td><%= goal.details %></td>
+        <td><%= goal.complete %></td>
+        <td><%= link_to 'Details', goal %></td>
+        <td><%= link_to 'Edit Goal', edit_goal_path(goal) %></td>
+        <td><%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p><%= link_to 'New Goal', new_goal_path %></p>
+<p><%= link_to "Home", home_index_path %></p>

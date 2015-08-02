@@ -1,0 +1,112 @@
+$font-family-sans-serif:  "Karla", Helvetica, Arial, sans-serif !default;
+$font-size-base:          13px !default;
+$border-radius-base:        0px !default;
+$border-radius-large:       0px !default;
+$border-radius-small:       0px !default;
+
+/* Navbar */
+$navbar-default-bg:         #f8f8f8 !default;
+$navbar-default-color:      #fff !default;
+
+
+/* Buttons */
+$btn-warning-color:         #fff !default;
+$btn-warning-bg:            #f27f05 !default;
+$btn-warning-border:        darken($btn-warning-bg, 5%) !default;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/*@import url(http://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic);*/
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+ *= require jquery
+ *= require jquery_ujs
+ *= require turbolinks
+ *= require bootstrap-sprockets
+ *= require_tree .
+ *= require_self
+ */
+
+ .pagewrap {
+  text-align: center;
+  /*background: #f27f05 !important;*/
+ }
+
+.loggin {
+  width: 90%;
+  max-width: 350px;
+  margin: 200px auto;
+}
+
+.form-1 {
+  width :300px !important;
+  margin-bottom: 10px;
+}
+
+.formp {
+	margin-top: 20px;
+	padding-right: 40px;
+}
+
+
+.homemargin {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.feed {
+  margin-top: 20px;
+}
+
+.feedborder {
+  padding-left: 27px;
+  border-left: 1px solid;
+  border-color: #ddd;
+}
+
+.search {
+	margin-bottom: 15px; 
+}
+
+.searchbar {
+	border-right: none;
+	float: left;
+}
+
+.footer {
+	display: block;
+	margin-top: 50px;
+	padding-bottom: 200px;
+	padding-top: 10px;
+	border-top: 1px solid;
+	border-color: #ddd;
+	background-color: $navbar-default-bg;
+
+}
+
+.noticetext {
+	color: $btn-warning-bg;
+	margin-bottom: 20px;
+}
+
+.orgtxt {
+	color: $btn-warning-bg;
+}
+
+/*footer {
+	display: block;
+}*/

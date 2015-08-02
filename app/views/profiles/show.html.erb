@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<h2>Check your details</h2>
+<p>
+  <strong>First Name:</strong>
+  <%= @profile.fname %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @profile.lname %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @profile.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @profile.country %>
+</p>
+
+<p>
+  <strong>Profile Image:</strong>
+  <%= cl_image_tag(@profile.profileimage, :width => 200, class: "img-thumbnail") %>
+</p>
+
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', home_index_path %>

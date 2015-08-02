@@ -1,0 +1,17 @@
+<%= simple_form_for(@profile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :fname, :label => "First Name ", input_html: { class: "form-control form-1" } %>
+    <%= f.input :lname, :label => "Last Name ", input_html: { class: "form-control form-1" } %>
+    <%= f.input :city, input_html: { class: "form-control form-1" } %>
+    <%= f.input :country, input_html: { class: "form-control form-1" } %>
+    <%= f.input :profileimage, :label => "Profile Pic " %>
+  </div>
+
+  <div class="form-actions, margin: 20px">
+    <%= f.button :submit %>
+
+  </div>
+<% end %>
+<p class="noticetext" id="notice"><%= notice %></p>

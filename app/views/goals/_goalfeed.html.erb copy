@@ -1,0 +1,93 @@
+<div class="tab-content">
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#myFeed" aria-controls="myFeed" role="tab" data-toggle="tab">My Goals</a></li>
+    <li role="presentation"><a href="#goalFeed" aria-controls="goalFeed" role="tab" data-toggle="tab">Feed</a></li>
+  </ul>
+
+
+<div role="tabpanel" class="tab-pane fade in active" id="myFeed">
+<h2>My Goals</h2>
+
+<%= link_to "New Goal", new_goal_path, method: :get, class: "btn btn-warning" %>
+	<!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createGoal">Create New Goal</button> -->
+	
+
+<div class="feed">
+	<% @goals.each do |goal| %>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4><strong><%= goal.name %></strong></h4>
+				<p><strong>Starts </strong><%= goal.startdate.strftime("%v") %>  <strong>Ends </strong><%= goal.enddate.strftime("%v") %></p>
+				<p><%= goal.details %></p>
+				<div class="pull-right">
+					<% if goal.complete %>
+						<h4><%= "Complete!" %></h4>
+					<% else %>
+						<%= link_to "Complete", completed_goal_path(goal), method: :patch, class: "btn btn-warning" %> 
+					<% end %>		
+				</div>
+					<%= link_to 'Edit', edit_goal_path(goal), method: :get %> | 
+					<%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+</div>
+
+<div role="tabpanel" class="tab-pane fade in" id="goalFeed">
+<h2>Feed</h2>
+<div>
+	<% @feed_items.each do |goal| %>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="col-sm-10">
+					<h4><strong><%= goal.name %></strong></h4>
+					<p>
+					<% if goal.user.profile %>
+	      				<%= goal.user.profile.name %>
+	      			<% else %>
+	      				<%= goal.user.email %>
+	      			<% end %>
+	      			</p>
+					<p><strong>Starts </strong><%= goal.startdate.strftime("%v") %>  <strong>Ends </strong><%= goal.enddate.strftime("%v") %></p>
+					<p><%= goal.details %></p>
+				</div>
+				<div class="col-sm-2">
+						<% if goal.user.profile %>
+							<div><%= cl_image_tag(goal.user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, class: "img-circle") %></div>
+						<% end %>
+
+						<% if goal.complete %>
+							<br>
+							<p class="orgtxt"><strong><%= "Complete!" %></strong></p>
+						<% else %>
+							<br>
+							<p><strong><%= "Not Complete" %></strong></p>
+						<% end %>
+					
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+</div>
+</div>
+
+
+<!-- scripts -->
+
+<script type="text/javascript">
+	$('#myFeed a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	})
+	
+	$('#goalFeed a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	})
+</script>

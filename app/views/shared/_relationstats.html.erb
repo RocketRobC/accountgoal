@@ -1,0 +1,47 @@
+<% @user ||= current_user %>
+<div class="panel panel-default">
+	<div class="panel-heading">
+	<strong id="following" class="relationstats">
+		<%= link_to "Following", following_user_path(@user) %>
+		<span class="badge"><%= @user.followed_users.count %></span>
+		<br>
+	</strong>
+	</div>
+	<div class="panel-body">
+		<% if @user.followed_users.any? %>
+      		<% @user.followed_users.each do |user| %>
+      			<% if user.profile %>
+	      			<% if user.profile.profileimage %>
+	      				<%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, class: "img-circle")), profile_path(user.profile) %>
+	      			<% else %>
+	      				<%= link_to "#{user.profile.name}", profile_path(user) %>
+	      			<% end %>
+      			<% else %>
+      				<%= user.email %>
+      			<% end %>
+      		<% end %>
+      	<% end %>
+	</div>
+	<div class="panel-heading">
+	<strong id="followed" class="relationstats">
+		<%= link_to "Followers", followers_user_path(@user) %>
+		<span class="badge"><%= @user.followers.count %></span>
+		<br>
+	</strong>
+	</div>
+	<div class="panel-body">
+		<% if @user.followers.any? %>
+      		<% @user.followers.each do |user| %>
+      			<% if user.profile %>
+      				<% if user.profile.profileimage %>
+	      				<%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, class: "img-circle")), profile_path(user.profile) %>
+	      			<% else %>
+	      				<%= user.profile.name %>
+	      			<% end %>
+      			<% else %>
+      				<%= user.email %>
+      			<% end %>
+      		<% end %>
+      	<% end %>
+	</div>
+</div>

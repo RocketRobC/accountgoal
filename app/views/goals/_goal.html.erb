@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+			<div class="panel-body">
+				<h4><strong><%= goal.name %></strong></h4>
+				<p><strong>Starts </strong><%= goal.startdate.strftime("%v") %>  <strong>Ends </strong><%= goal.enddate.strftime("%v") %></p>
+				<p><%= goal.details %></p>
+				<div class="pull-right">
+					<% if goal.complete %>
+						<h4><%= "Complete!" %></h4>
+					<% else %>
+						<%= link_to "Complete", completed_goal_path(goal), method: :patch, class: "btn btn-warning" %> 
+					<% end %>		
+				</div>
+					<%= link_to 'Edit', edit_goal_path(goal), method: :get %> | 
+					<%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</div>
+		</div>

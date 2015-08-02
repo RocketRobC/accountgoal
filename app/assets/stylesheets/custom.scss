@@ -1,0 +1,46 @@
+/*.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }*/
+
+.pagewrap {
+  text-align: center;
+  /*background: #f27f05 !important;*/
+ }
+
+.loggin {
+  width: 90%;
+  max-width: 350px;
+  margin: 200px auto;
+}
+
+.form-1 {
+  width :300px !important;
+  margin-bottom: 10px;
+}
+
+.homemargin {
+  margin-top: 50px;
+}
+
+.feed {
+  margin-top: 20px;
+}
+
+.panel {
+  border-radius: 0px;
+}

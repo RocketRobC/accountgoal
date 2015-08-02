@@ -1,0 +1,34 @@
+<h2>Users</h2>
+<%= link_to "Back", home_index_path %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<div class="user_follow">
+  <tbody>
+    <% @users.each do |user| %>
+      <tr><% unless current_user == user %>
+        <td><%= link_to user.email, user %></td>
+        <td><% if current_user.following?(user) %>
+        	<%= render partial: "users/unfollow", locals: { user: user } %>
+        	<% else %>
+        	<%= render partial: "users/follow", locals: { user: user } %>
+        	<% end %>
+        	
+        	</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+  </div>
+</table>
+
+

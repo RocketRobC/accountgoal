@@ -1,0 +1,26 @@
+<%= simple_form_for(@goal, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :startdate, label: "Goal Starts", as: :date, discard_time: true %>
+    <%= f.input :enddate, label: "Goal Ends", as: :date, discard_time: true %>
+    <%= f.input :name, input_html: { class: "form-control form-1" } %>
+    <%= f.input :details, as: :text, input_html: { class: "form-control form-1" } %>
+    <%= f.input :complete, label: "Complete?", as: :boolean %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+<p class="noticetext" id="notice"><%= notice %></p>
+
+<!-- scripts -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#datepicker').datepicker({
+    format: 'dd/mm/yyyy'
+}
+});
+</script>

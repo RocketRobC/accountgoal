@@ -1,0 +1,50 @@
+<% unless user_signed_in? %>
+  
+  <%= render "homepage" %>
+  
+<% else %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p class="noticetext text-center" id="notice"><%= notice %></p>
+		</div>
+	</div>
+<div class="row">
+	<div class="col-md-4">
+	<% if user_signed_in? %>
+		<section class="relationstats">
+	        <%= render 'shared/relationstats' %>
+	    </section>
+	    
+	    <br>
+	     	<%= render "shared/usersearch" %>
+	      	<%= link_to "List all users", users_path %>
+		
+		
+			<%= render "goals/mycompgoals" %>
+
+		</div>
+		
+	<div class="col-md-8">
+	  <div class="feedborder">
+	    <%= render "goals/goalfeed" %>
+	  </div>
+	</div>
+</div>
+
+	<% else %>
+		<h3>Welcome, please sign in</h3>
+		<%= link_to "Sign In", new_user_session_path %>
+	<% end %>
+</div>
+
+ <!-- Close container -->
+
+ <!-- Scripts -->
+<script type="text/javascript">
+	$("#notice").fadeOut(5000);
+</script>
+
+<% end %>

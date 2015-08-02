@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @goal.startdate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @goal.enddate %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @goal.name %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @goal.details %>
+</p>
+
+<p>
+  <strong>Complete:</strong>
+  <%= @goal.complete %>
+</p>
+
+<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Back', home_index_path %>
