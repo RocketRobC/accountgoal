@@ -1,30 +1,21 @@
 <p id="notice"><%= notice %></p>
-<h2>Check your details</h2>
-<p>
-  <strong>First Name:</strong>
-  <%= @profile.fname %>
-</p>
+<h2>Goalsetter Profile</h2>
 
 <p>
-  <strong>Last Name:</strong>
-  <%= @profile.lname %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @profile.city %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @profile.country %>
-</p>
-
-<p>
-  <strong>Profile Image:</strong>
   <%= cl_image_tag(@profile.profileimage, :width => 200, class: "img-thumbnail") %>
 </p>
 
+<p>
+  <h3><strong><%= @profile.fname %> <%= @profile.lname %></strong></h3>
+</p>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', home_index_path %>
+<p>
+  <strong><%= @profile.city %>, <%= @profile.country %></strong>
+</p>
+
+
+
+<% if current_user.profile == @profile %>
+  <%= link_to 'Edit Profile', edit_profile_path(@profile), class: "btn btn-warning" %>
+<% end %>
+

@@ -12,8 +12,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @user = @profile.user
-    # @profile = Profile.find(params[:id])
+    
   end
 
   # GET /profiles/new
@@ -53,10 +52,10 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to edit_profile_path, notice: 'Profile was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @profile }
+        format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
-        # format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
   end

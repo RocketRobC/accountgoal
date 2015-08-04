@@ -3,7 +3,7 @@
 
 	<p>Total Goals: <strong><%= @goals.count %></strong></p>
 	<p>Goals Complete: <strong><%= @completed_goals.count %></strong></p>
-	<p>Incomplete Goals: <strong><%=@incomplete_goals.count %></strong></p>
+	<p>Incomplete Goals: <strong><%= @incomplete_goals.count %></strong></p>
 	<p>Last 7 Days: <strong><%= @completed_goals.last7.count %></strong></p>
 	<p>Previous 7 Days: <strong><%= @completed_goals.previous_week.count %></strong></p>
 </div>
