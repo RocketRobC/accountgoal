@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150801001921) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "controllers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 20150801001921) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "controllers", ["email"], name: "index_controllers_on_email", unique: true
-  add_index "controllers", ["reset_password_token"], name: "index_controllers_on_reset_password_token", unique: true
+  add_index "controllers", ["email"], name: "index_controllers_on_email", unique: true, using: :btree
+  add_index "controllers", ["reset_password_token"], name: "index_controllers_on_reset_password_token", unique: true, using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.datetime "startdate"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150801001921) do
     t.integer  "user_id"
   end
 
-  add_index "goals", ["user_id"], name: "index_goals_on_user_id"
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "fname"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150801001921) do
     t.integer  "user_id"
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -64,9 +67,9 @@ ActiveRecord::Schema.define(version: 20150801001921) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -76,8 +79,8 @@ ActiveRecord::Schema.define(version: 20150801001921) do
     t.datetime "updated_at"
   end
 
-  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], name: "index_roles_on_name"
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -96,16 +99,16 @@ ActiveRecord::Schema.define(version: 20150801001921) do
     t.string   "uid"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["provider"], name: "index_users_on_provider"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid"], name: "index_users_on_uid"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
   create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
 
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
 end

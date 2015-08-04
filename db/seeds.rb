@@ -8,18 +8,18 @@
 user = User.create!(email: "rob@robcornishmusic.com", password: "12345678")
 user.add_role :admin
 
-49.times do |n|
-	# name = Faker::Name.name
-	email = "u#{n+1}@robcornishmusic.com"
-	password = "12345678"
-	user = User.create!(email: email, password: password)
-	# user.profile.create(name: )
-end
+# 49.times do |n|
+# 	# name = Faker::Name.name
+# 	email = "u#{n+1}@robcornishmusic.com"
+# 	password = "12345678"
+# 	user = User.create!(email: email, password: password)
+# 	# user.profile.create(name: )
+# end
 
-#Relationships
-users = User.all
-user = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+# #Relationships
+# users = User.all
+# user = users.first
+# following = users[2..50]
+# followers = users[3..40]
+# following.each { |followed| user.follow(followed) }
+# followers.each { |follower| follower.follow(user) }

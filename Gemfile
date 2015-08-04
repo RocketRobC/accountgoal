@@ -16,6 +16,7 @@ gem "will_paginate"
 gem "omniauth-facebook"
 gem "omniauth"
 gem "groupdate"
+gem "pg"
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
