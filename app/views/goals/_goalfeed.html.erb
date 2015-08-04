@@ -39,8 +39,9 @@
 					<p><%= goal.details %></p>
 				</div>
 				<div class="col-sm-2">
+					<div class="text-center">
 						<% if goal.user.profile %>
-							<div><%= link_to (cl_image_tag(goal.user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, class: "img-circle")), profile_path(goal.user.profile), method: :get %></div>
+							<div><%= link_to (cl_image_tag(goal.user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "avatar.png")), profile_path(goal.user.profile), method: :get %></div>
 						<% end %>
 
 						<% if goal.complete %>
@@ -50,6 +51,7 @@
 							<br>
 							<p><strong><%= "Not Complete" %></strong></p>
 						<% end %>
+					</div>
 					
 				</div>
 			</div>

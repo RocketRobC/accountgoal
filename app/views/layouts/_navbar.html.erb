@@ -15,11 +15,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-            <li><%= link_to "New Goal", new_goal_path %></li>
+            <li><%= link_to " ", new_goal_path, class: "glyphicon glyphicon-plus" %></li>
           <% if current_user.profile %>
 
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= cl_image_tag(current_user.profile.profileimage, :width => 30, :height => 30, :crop => :thumb, :gravity => :face, class: "img-circle") %><span class="caret"></span></a>  
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= cl_image_tag(current_user.profile.profileimage, :width => 30, :height => 30, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "d_avatar.png") %><span class="caret"></span></a>  
               <ul class="dropdown-menu">
                 <li><%= link_to "My Profile", profile_path(current_user.profile) %></li>
                 <li role="separator" class="divider"></li>
