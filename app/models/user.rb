@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def self.search(search)
-    where('email  LIKE ?', "%#{search}%").order("email; DESC")
+    where('email  ILIKE ?', "%#{search}%")
   end
 
 end

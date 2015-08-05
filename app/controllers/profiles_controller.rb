@@ -12,7 +12,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    
+    @goals = current_user.goals.order_created
+    @completed_goals = current_user.goals.completed.order_created
+    @incomplete_goals = current_user.goals.incomplete.order_created
+    @compchart = current_user.goals.completed
+    @goal = Goal.new
+    @profiles = Profile.all
   end
 
   # GET /profiles/new

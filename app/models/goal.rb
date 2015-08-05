@@ -49,4 +49,8 @@ class Goal < ActiveRecord::Base
 	  	where(updated_at: DateTime.now - 7.days..DateTime.now - 14.days)
 	end
 
+	# def self.last_12_months
+	# 	where(range = (DateTime.now.beginning_of_month - 11.months)..DateTime.now.end_of_month)
+	# end
+
 end

@@ -1,3 +1,5 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
 <p id="notice"><%= notice %></p>
 <h2>Goalsetter Profile</h2>
 
@@ -19,3 +21,7 @@
   <%= link_to 'Edit Profile', edit_profile_path(@profile), class: "btn btn-warning" %>
 <% end %>
 
+<%= render "goals/mycompgoals" %>
+
+
+<%= column_chart @compchart.group_by_week(:updated_at, format: "%b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>

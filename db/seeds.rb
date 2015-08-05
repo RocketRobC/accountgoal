@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create!(email: "rob@robcornishmusic.com", password: "12345678")
-user.add_role :admin
+# user = User.create!(email: "rob@robcornishmusic.com", password: "12345678")
+# user.add_role :admin
 
 # 49.times do |n|
 # 	# name = Faker::Name.name
@@ -23,3 +23,5 @@ user.add_role :admin
 # followers = users[3..40]
 # following.each { |followed| user.follow(followed) }
 # followers.each { |follower| follower.follow(user) }
+
+goal = Goal.create([{ startdate: "2015-05-10 00:00:00", enddate: "2015-05-15 00:00:00", name: "Test" }, { startdate: "2015-05-20 00:00:00", enddate: "2015-05-25 00:00:00", name: "Test2" }, { startdate: "2015-06-10 00:00:00", enddate: "2015-06-15 00:00:00", name: "Test3" }, { startdate: "2015-07-10 00:00:00", enddate: "2015-07-15 00:00:00", name: "Test4" }, { startdate: "2015-07-12 00:00:00", enddate: "2015-05-17 00:00:00", name: "Test5" }])

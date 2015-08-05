@@ -17,9 +17,11 @@ gem "omniauth-facebook"
 gem "omniauth"
 gem "groupdate"
 gem "pg"
+gem "chartkick"
+gem "active_median"
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.5'
