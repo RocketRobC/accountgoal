@@ -1,9 +1,30 @@
 <div class="panel panel-default homemargin" style="padding-left: 10px">
+	
 	<h3>Goal Stats</h3>
-
-	<p>Total Goals: <strong><%= @goals.count %></strong></p>
-	<p>Goals Complete: <strong><%= @completed_goals.count %></strong></p>
-	<p>Incomplete Goals: <strong><%= @incomplete_goals.count %></strong></p>
-	<p>Last 7 Days: <strong><%= @completed_goals.last7.count %></strong></p>
-	<p>Previous 7 Days: <strong><%= @completed_goals.previous_week.count %></strong></p>
+		<table>
+			<tr>
+				<td>Total Goals: </td>
+				<td><strong><%= @goals.count %></strong></td>
+			</tr>
+			<tr>
+				<td>Goals Complete: </td>
+				<td><strong><%= @completed_goals.count %></strong></td>
+			</tr>
+			<tr>
+				<td>Goals Complete 2: </td>
+				<td><strong><%= @usergoals.count %></strong></td>
+			</tr>
+			<tr>
+				<td>Incomplete Goals: </td>
+				<td><strong><%= @incomplete_goals.count %></strong></td>
+			</tr>
+			<tr>
+				<td>Last 7 Days: </td>
+				<td><strong><%= @completed_goals.last7.count %></strong></td>
+			</tr>
+			<tr>
+				<td>Previous 7 Days: </td>
+				<td><strong><%= @completed_goals.previous_week.count %></strong></td>
+			</tr>
+		</table>
 </div>

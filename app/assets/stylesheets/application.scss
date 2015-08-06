@@ -107,6 +107,10 @@ $btn-warning-border:        darken($btn-warning-bg, 5%) !default;
 	color: $btn-warning-bg;
 }
 
+th, td {
+    padding: 6px;
+}
+
 /*footer {
 	display: block;
 }*/

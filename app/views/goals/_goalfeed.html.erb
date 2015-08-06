@@ -46,7 +46,8 @@
 
 						<% if goal.complete %>
 							<br>
-							<p class="orgtxt"><strong><%= "Complete!" %></strong></p>
+							<p class="orgtxt"><strong>Complete!</strong></p>
+							<p class="orgtxt"><%= goal.completed_at %></p>
 						<% else %>
 							<br>
 							<p><strong><%= "Not Complete" %></strong></p>

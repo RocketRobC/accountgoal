@@ -23,5 +23,14 @@
 
 <%= render "goals/mycompgoals" %>
 
+<h3>
+  <% if current_user.profile == @profile %>
+    <%= "My Complete Goals" %>
+  <% else %>
+    <%="#{@profile.fname}'s Complete Goals" %>
+  <% end %>
+</h3>
+<%= column_chart @usergoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
 
-<%= column_chart @compchart.group_by_week(:completed_at, format: "%b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
+<h3>All User's Complete Goals</h3>
+  <%= column_chart @allgoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>

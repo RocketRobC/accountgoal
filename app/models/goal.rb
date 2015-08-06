@@ -33,6 +33,10 @@ class Goal < ActiveRecord::Base
 		order(updated_at: :desc)
 	end
 
+	def self.order_completed
+		order(completed_at: :desc)
+	end
+
 	def self.completed
 		where(complete: true)
 	end
@@ -42,15 +46,17 @@ class Goal < ActiveRecord::Base
 	end
 
 	def self.last7
-    	where("updated_at >= ? ", 7.days.ago)
+    	where("completed_at >= ? ", 7.days.ago)
 	end
 
 	def self.previous_week
-	  	where(updated_at: DateTime.now - 7.days..DateTime.now - 14.days)
+	  	where(completed_at: DateTime.now - 7.days..DateTime.now - 14.days)
 	end
 
 	# def self.last_12_months
 	# 	where(range = (DateTime.now.beginning_of_month - 11.months)..DateTime.now.end_of_month)
 	# end
+
+	
 
 end
