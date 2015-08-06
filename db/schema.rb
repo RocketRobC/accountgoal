@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801001921) do
+ActiveRecord::Schema.define(version: 20150806065141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,11 +40,13 @@ ActiveRecord::Schema.define(version: 20150801001921) do
     t.string   "name"
     t.string   "details"
     t.boolean  "complete"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.datetime "completed_at"
   end
 
+  add_index "goals", ["completed_at"], name: "index_goals_on_completed_at", using: :btree
   add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|

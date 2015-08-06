@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
 
 
   def completed
-    @goal.update_attribute(:complete, true)
+    @goal.update_attributes(:complete => true, :completed_at => DateTime.now.beginning_of_day)
     redirect_to :back
   end
 

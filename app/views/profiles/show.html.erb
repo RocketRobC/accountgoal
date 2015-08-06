@@ -24,4 +24,4 @@
 <%= render "goals/mycompgoals" %>
 
 
-<%= column_chart @compchart.group_by_week(:updated_at, format: "%b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
+<%= column_chart @compchart.group_by_week(:completed_at, format: "%b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>

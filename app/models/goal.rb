@@ -2,8 +2,8 @@ class Goal < ActiveRecord::Base
 	belongs_to :user
 	# default_scope -> { order(updated_at: :desc) }
 	validates :startdate, :enddate, :name, presence: true
-	validate :starts_in_future
-	validate :start_before_ends
+	# validate :starts_in_future
+	# validate :start_before_ends
 
 	def self.future_events
 		where("starts > ?", DateTime.now)

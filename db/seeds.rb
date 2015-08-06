@@ -24,4 +24,13 @@
 # following.each { |followed| user.follow(followed) }
 # followers.each { |follower| follower.follow(user) }
 
-goal = Goal.create([{ startdate: "2015-05-10 00:00:00", enddate: "2015-05-15 00:00:00", name: "Test" }, { startdate: "2015-05-20 00:00:00", enddate: "2015-05-25 00:00:00", name: "Test2" }, { startdate: "2015-06-10 00:00:00", enddate: "2015-06-15 00:00:00", name: "Test3" }, { startdate: "2015-07-10 00:00:00", enddate: "2015-07-15 00:00:00", name: "Test4" }, { startdate: "2015-07-12 00:00:00", enddate: "2015-05-17 00:00:00", name: "Test5" }])
+goals = [{ startdate: "2015-05-10 00:00:00", enddate: "2015-05-15 00:00:00", name: "Test21", complete: "true", user_id: "1", completed_at: "2015-05-10 00:00:00" }, { startdate: "2015-05-20 00:00:00", enddate: "2015-05-25 00:00:00", name: "Test22", complete: "true", user_id: "1", completed_at: "2015-05-25 00:00:00" }, { startdate: "2015-06-10 00:00:00", enddate: "2015-06-15 00:00:00", name: "Test23", complete: "false", user_id: "1", completed_at: "2015-06-11 00:00:00" }, { startdate: "2015-07-10 00:00:00", enddate: "2015-07-15 00:00:00", name: "Test24", complete: "false", user_id: "1", completed_at: "2015-07-17 00:00:00" }, { startdate: "2015-07-12 00:00:00", enddate: "2015-05-17 00:00:00", name: "Test25", complete: "true", user_id: "1", completed_at: "2015-07-10 00:00:00" }]
+
+goals.each do |goal|
+	Goal.create!(goal)
+end
+
+
+
+
+
