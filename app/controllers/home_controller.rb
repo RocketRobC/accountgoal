@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 	  	@goals = @profile.user.goals.order_created
 	  	@completed_goals = @profile.user.goals.completed.order_created
 	  	@incomplete_goals = @profile.user.goals.incomplete.order_created
-	  	
+	  	@complete_before_enddate = @profile.user.goals.complete_before_enddate 	
 	  end
 	end
 

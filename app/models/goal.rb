@@ -20,7 +20,7 @@ class Goal < ActiveRecord::Base
 	end
 
 	def starts_in_future
-		if startdate.present? && startdate <= DateTime.now
+		if startdate.present? && startdate <= DateTime.now.beginning_of_day
 			errors.add(:startdate, "Start date can't be before the current date")
 		end
 	end
@@ -50,8 +50,17 @@ class Goal < ActiveRecord::Base
 	end
 
 	def self.previous_week
-	  	where(completed_at: DateTime.now - 7.days..DateTime.now - 14.days)
+	  	where(completed_at: DateTime.now.beginning_of_day - 7.days..DateTime.now.beginning_of_day - 14.days)
 	end
+
+	def self.complete_before_enddate
+		where("complete = true AND completed_at <= enddate")
+	end
+
+	def percent_of(n)
+    	self.to_f / n.to_f * 100.0
+  	end
+
 
 	# def self.last_12_months
 	# 	where(range = (DateTime.now.beginning_of_month - 11.months)..DateTime.now.end_of_month)

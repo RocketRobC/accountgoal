@@ -35,6 +35,7 @@ $btn-warning-border:        darken($btn-warning-bg, 5%) !default;
 
  *= require jquery
  *= require jquery_ujs
+ *= require jquery-ui
  *= require turbolinks
  *= require bootstrap-sprockets
  *= require_tree .

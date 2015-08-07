@@ -8,12 +8,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<p class="noticetext text-center" id="notice"><%= notice %></p>
+			<!-- <p class="noticetext text-center" id="notice"><%= notice %></p> -->
 		</div>
 	</div>
 <div class="row">
 	<div class="col-md-4">
 	<% if user_signed_in? %>
+		<%= render "goals/mycompgoals" %>
+
 		<section class="relationstats">
 	        <%= render 'shared/relationstats' %>
 	    </section>
@@ -21,9 +23,6 @@
 	    <br>
 	     	<%= render "shared/usersearch" %>
 	      	<%= link_to "List all users", users_path %>
-		
-		
-			<%= render "goals/mycompgoals" %>
 
 		</div>
 		

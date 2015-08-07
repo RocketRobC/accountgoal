@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   get 'admin', to: 'admin#index'
   get "home/index"
+
   # get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

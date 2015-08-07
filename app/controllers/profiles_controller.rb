@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   prepend_before_action :set_profile, only: [:show, :destroy]
 
 
-
   # GET /profiles
   # GET /profiles.json
   def index
@@ -19,6 +18,7 @@ class ProfilesController < ApplicationController
     @goals = @profile.user.goals.order_created
     @completed_goals = @profile.user.goals.completed.order_created
     @incomplete_goals = @profile.user.goals.incomplete.order_created
+    @complete_before_enddate = @profile.user.goals.complete_before_enddate
     # @goals = current_user.goals.order_created
     # @allgoals = Goal.completed
     # @completed_goals = current_user.goals.completed.order_created
