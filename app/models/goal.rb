@@ -6,7 +6,7 @@ class Goal < ActiveRecord::Base
 	# validate :start_before_ends
 
 	def self.future_events
-		where("starts > ?", DateTime.now)
+		where("starts > ?", DateTime.now.beginning_of_day)
 	end
 
 	def start_before_ends
@@ -57,6 +57,6 @@ class Goal < ActiveRecord::Base
 	# 	where(range = (DateTime.now.beginning_of_month - 11.months)..DateTime.now.end_of_month)
 	# end
 
-	
+
 
 end

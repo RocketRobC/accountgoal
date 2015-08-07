@@ -1,36 +1,46 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
 <p id="notice"><%= notice %></p>
-<h2>Goalsetter Profile</h2>
 
-<p>
-  <%= cl_image_tag(@profile.profileimage, :width => 200, :default_image => "avatar.png", class: "img-thumbnail") %>
-</p>
+<div class="col-sm-4">
+  <h2><strong>Goalsetter Profile</strong></h2>
+    <p>
+      <%= cl_image_tag(@profile.profileimage, :width => 200, :default_image => "avatar.png", class: "img-thumbnail") %>
+    </p>
+    <p>
+      <h3><strong><%= @profile.fname %> <%= @profile.lname %></strong></h3>
+    </p>
+    <p>
+      <strong><%= @profile.city %>, <%= @profile.country %></strong>
+    </p>
 
-<p>
-  <h3><strong><%= @profile.fname %> <%= @profile.lname %></strong></h3>
-</p>
+    <% if current_user.profile == @profile %>
+      <%= link_to 'Edit Profile', edit_profile_path(@profile), class: "btn btn-warning" %>
+    <% end %>
 
-<p>
-  <strong><%= @profile.city %>, <%= @profile.country %></strong>
-</p>
+    <%= render "goals/mycompgoals" %>
+
+    <h3>All User's Complete Goals</h3>
+      <%= column_chart @allgoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
+</div>
+<div class="col-sm-8">
+
+  <h2>
+    <% if current_user.profile == @profile %>
+      <%= "My Complete Goals" %>
+    <% else %>
+      <%="#{@profile.fname}'s Complete Goals" %>
+    <% end %>
+  </h2>
+      <%= column_chart @usergoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
+
+  <div>
+    <h2>Current Goals</h2>
+      <%= render @goals %>
+  </div>
+</div>
 
 
 
-<% if current_user.profile == @profile %>
-  <%= link_to 'Edit Profile', edit_profile_path(@profile), class: "btn btn-warning" %>
-<% end %>
 
-<%= render "goals/mycompgoals" %>
 
-<h3>
-  <% if current_user.profile == @profile %>
-    <%= "My Complete Goals" %>
-  <% else %>
-    <%="#{@profile.fname}'s Complete Goals" %>
-  <% end %>
-</h3>
-<%= column_chart @usergoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
-
-<h3>All User's Complete Goals</h3>
-  <%= column_chart @allgoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
