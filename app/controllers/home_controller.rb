@@ -12,7 +12,16 @@ class HomeController < ApplicationController
 	  	@goals = @profile.user.goals.order_created
 	  	@completed_goals = @profile.user.goals.completed.order_created
 	  	@incomplete_goals = @profile.user.goals.incomplete.order_created
-	  	@complete_before_enddate = @profile.user.goals.complete_before_enddate 	
+	  	@complete_before_enddate = @profile.user.goals.complete_before_enddate
+
+	  	if params[:filter]
+	  		if params[:filter] == 'complete'
+	  			@goals =  @profile.user.goals.completed.order_created
+	  		elsif params[:filter] == 'incomplete'
+	  			@goals =  @profile.user.goals.incomplete.order_created
+	  		end
+	  	end
+
 	  end
 	end
 

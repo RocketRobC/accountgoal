@@ -2,10 +2,10 @@
 <div><%= @user.email %></div>
 <br>
 <div class="follow_form">
-<% if current_user.following?(@user) %>
-          <%= render partial: "users/unfollow", locals: { user: @user } %>
-          <% else %>
-          <%= render partial: "users/follow", locals: { user: @user } %>
-          <% end %>
+	<% if current_user.following?(@user) %>
+	       <%= render partial: "users/unfollow", locals: { user: @user } %>
+	<% else %>
+	      <%= render partial: "users/follow", locals: { user: @user } %>
+	<% end %>
 </div>
 <%= link_to "Back", users_path %>

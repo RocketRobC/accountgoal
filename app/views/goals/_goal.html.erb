@@ -12,6 +12,7 @@
 						<div class="text-center">
 							<% if goal.complete %>
 								<h4 class="orgtxt"><strong><%= "Complete!" %></strong></h4>
+								<p><%= goal.completed_at.strftime("%v") if goal.completed_at %></p>
 							<% else %>
 								<%= link_to "Complete", completed_goal_path(goal), method: :patch, class: "btn btn-warning" %> 
 							<% end %>		
@@ -29,7 +30,7 @@
 							<% if goal.complete %>
 								<br>
 								<h4 class="orgtxt"><strong>Complete!</strong></h4>
-								<p><%= goal.completed_at %></p>
+								<p><%= goal.completed_at.strftime("%v") if goal.completed_at %></p>
 							<% else %>
 								<br>
 								<h4><%= "Not Complete" %></h4>

@@ -11,6 +11,13 @@
 		<h2>My Goals</h2>
 
 			<%= link_to "New Goal", new_goal_path, method: :get, class: "btn btn-warning" %>
+		<div class="pull-right">
+			<%= link_to "Complete", home_index_path(filter: 'complete'), method: :get %> | 
+			<%= link_to "Incomplete", home_index_path(filter: 'incomplete'), method: :get %> | 
+			<%= link_to "All", home_index_path, method: :get %>
+		</div>
+		<!-- <div class="pull-right"> -->
+			<%# link_to "Complete", @profile.user.goals.complete %>
 
 		<div class="feed">
 			<%# render @mygoalsfeed %>
@@ -46,7 +53,7 @@
 									<% if goal.complete %>
 										<br>
 										<p class="orgtxt"><strong>Complete!</strong></p>
-										<p class="orgtxt"><%= goal.completed_at %></p>
+										<p class="orgtxt"><%= goal.completed_at.strftime("%v") if goal.completed_at %></p>
 									<% else %>
 										<br>
 										<p><strong><%= "Not Complete" %></strong></p>

@@ -20,13 +20,9 @@
     <div style="margin-top: 50px">
       <%= render "goals/mycompgoals" %>
     </div>
-    <div style="margin-top: 50px">
-      <!-- <h3>All User's Complete Goals</h3>
-        <%= column_chart @allgoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %> -->
-    </div>
 </div>
-<div class="col-sm-8">
 
+<div class="col-sm-8">
   <h2>
     <% if current_user.profile == @profile %>
       <%= "My Complete Goals" %>
@@ -36,9 +32,16 @@
   </h2>
       <%= column_chart @usergoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
 
-  <div>
+  <div style="margin-top: 50px">
     <h2>Current Goals</h2>
+    <div class="pull-right">
+      <%= link_to "Complete", profile_path(filter: 'complete'), method: :get %> | 
+      <%= link_to "Incomplete", profile_path(filter: 'incomplete'), method: :get %> | 
+      <%= link_to "All", profile_path, method: :get %>
+    </div>
+    <div style="margin-top: 40px">
       <%= render @goals %>
+    </div>
   </div>
 </div>
 

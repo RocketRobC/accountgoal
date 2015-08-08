@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  devise_for :controllers
+  # devise_for :controllers
   resources :goals do
    member do
       patch :completed
