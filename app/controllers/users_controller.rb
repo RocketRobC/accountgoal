@@ -22,6 +22,8 @@ class UsersController < ApplicationController
 		else
 			@users = User.all.order("email ASC")
 		end
+
+		@profiles = Profile.all
 	end
 
 	def show

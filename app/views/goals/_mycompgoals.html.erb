@@ -26,7 +26,15 @@
 			</tr>
 			<tr>
 				<td><h4><a href="#GoalScoreModal" data-toggle="modal">Goal Score</a></h4></td>
-				<td><h4><strong><%= ((@complete_before_enddate.count.to_f / @usergoals.count.to_f) * 10).to_i %></strong></h4></td>
+				<td>
+					<h4><strong>
+						<% if @completed_goals.any? %>
+							<%= ((@complete_before_enddate.count.to_f / @usergoals.count.to_f) * 10).to_i %>
+						<% else %>
+							<%= 0 %>
+						<% end %>
+					</strong></h4>
+					</td>
 		</table>
 
 <!-- Modal -->

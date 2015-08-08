@@ -28,11 +28,6 @@ class ProfilesController < ApplicationController
       end
     end
 
-
-    # @goals = current_user.goals.order_created
-    # @allgoals = Goal.completed
-    # @completed_goals = current_user.goals.completed.order_created
-    # @incomplete_goals = current_user.goals.incomplete.order_created
   end
 
   # GET /profiles/new
