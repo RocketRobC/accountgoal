@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<h2>Thanks <%= @contact.fname %>!</h2>
+<p>
+  <strong>Subject:</strong>
+  <%= @contact.title %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @contact.text %>
+</p>
+<%= link_to 'Back', home_index_path %>

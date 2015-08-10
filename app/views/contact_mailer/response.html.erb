@@ -1,0 +1,6 @@
+<% if @contact.fname %>
+	<h3>Hi <%= @contact.fname %>,</h3>
+<% else %>
+	<h3><%= @contact.email %></h3>
+<% end %>
+	<p>You email has been received and we'll get back to you soon.</p>
