@@ -7,12 +7,15 @@ $border-radius-small:       0px !default;
 /* Navbar */
 $navbar-default-bg:         #f8f8f8 !default;
 $navbar-default-color:      #fff !default;
+$navbar-default-brand-color:               #f27f05 !default;
 
 
 /* Buttons */
 $btn-warning-color:         #fff !default;
 $btn-warning-bg:            #f27f05 !default;
 $btn-warning-border:        darken($btn-warning-bg, 5%) !default;
+
+$badge-border-radius:       10px !default;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -45,6 +48,12 @@ $btn-warning-border:        darken($btn-warning-bg, 5%) !default;
  .pagewrap {
   text-align: center;
   /*background: #f27f05 !important;*/
+ }
+
+ .homepanel {
+ 	background-color: #f27f05;
+ 	margin-top: 200px;
+ 	margin-bottom: 100px;
  }
 
 .loggin {
@@ -119,6 +128,34 @@ th, td {
     padding-top: 10px;
     border: 1px solid transparent;
    }
+
+   .navbar-brand {
+   	font-size: 2em;
+   }
+
+	.nav-tabs > li.active > a,
+        .nav-tabs > li.active > a:hover,
+        .nav-tabs > li.active > a:focus {
+          color: #f27f05;
+          font-weight: bold;
+          cursor: default;
+          background-color: #ffffff;
+          /*border: 1px solid #dddddd;*/
+          border-bottom-color: transparent;
+          border-top-color: #f27f05;
+          border-top-width: 2px;
+          } 
+
+.custom-btn {
+  width: 270px !important;
+  font-size: 2em;
+  color: #f27f05;
+  text-shadow: none;
+  background-image: none;
+  /*background-color: #5FEBB7;*/
+  /*border-width: 2px;*/
+  /*border-color: #5FEBB7; */
+}
 
 /*footer {
 	display: block;

@@ -11,5 +11,10 @@ class ContactMailer < ApplicationMailer
 		mail(to: "rob@robcornishmusic.com", subject: "Website enquiry received")
 	end
 
+	def app_feedback(contact_id)
+		@contact = Contact.find(contact_id)
+		mail(to: "projects@robcornishmusic.com", subject: "Goal app feedback")
+	end
+
 
 end

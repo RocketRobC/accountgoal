@@ -15,14 +15,19 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+
+    if params[:filter]
+      if params[:filter] == "feedback"
+        @enquiry_type = "Feedback"
+      end
+    end
   end
 
   # GET /contacts/1/edit
   def edit
   end
 
-  # POST /contacts
-  # POST /contacts.json
+
   def create
     @contact = Contact.new(contact_params)
 

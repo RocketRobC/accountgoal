@@ -27,7 +27,6 @@ class ProfilesController < ApplicationController
         @goals = @profile.user.goals.incomplete.order_created
       end
     end
-
   end
 
   # GET /profiles/new
