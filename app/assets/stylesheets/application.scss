@@ -47,7 +47,6 @@ $badge-border-radius:       10px !default;
 
  .pagewrap {
   text-align: center;
-  /*background: #f27f05 !important;*/
  }
 
  .homepanel {
@@ -60,7 +59,10 @@ $badge-border-radius:       10px !default;
   width: 90%;
   max-width: 350px;
   margin: 200px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.75);
 }
+
 
 .form-1 {
   width :300px !important;
@@ -155,6 +157,33 @@ th, td {
   /*background-color: #5FEBB7;*/
   /*border-width: 2px;*/
   /*border-color: #5FEBB7; */
+}
+
+.circular {
+	width: 200px;
+ 	height: 200px;
+ 	background-color: #f27f05;
+ 	/*background-size: cover;*/
+ 	margin: 10px;
+ 	display: block;
+ 	border-radius: 100px;
+ 	-webkit-border-radius: 100px;
+ 	-moz-border-radius: 100px;
+}
+
+.circtext {
+	font-size: 2.8em;
+	font-weight: bold;
+	color: white;
+}
+
+.background {
+	background: url(http://res.cloudinary.com/dv3vuq62w/image/upload/e_shadow:30/a_0/v1439383917/NewYorkStreet_vthin2.jpg) no-repeat fixed center;
+}
+
+.signinbtn {
+	margin-top: 150px;
+	margin-bottom: 250px;
 }
 
 /*footer {

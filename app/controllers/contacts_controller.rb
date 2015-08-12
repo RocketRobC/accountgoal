@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
 
     if params[:filter]
       if params[:filter] == "feedback"
-        @enquiry_type = "Feedback"
+        @enquiry_type = "Goalkeeper Feedback"
       end
     end
   end

@@ -1,4 +1,3 @@
-<div class="container">
 <%= link_to 'Home', home_index_path %>
 <div><h1>Edit Your Profile</h1>
 <%= image_tag(current_user.profile.profileimage.url, :width => 100, class: "img-thumbnail") %>
@@ -11,6 +10,4 @@
 
 <div class="col-md-8">
 	<%= render "goals/mygoals" %>
-</div>
-
 </div>

@@ -4,12 +4,13 @@
 	<strong id="following" class="relationstats">
 		<%= link_to "Following", following_user_path(@user) %>
 		<span class="badge"><%= @user.followed_users.count %></span>
+		<%= link_to "List All", following_user_path(@user), class: "pull-right" %>
 		<br>
 	</strong>
 	</div>
 	<div class="panel-body">
 		<% if @user.followed_users.any? %>
-      		<% @user.followed_users.each do |user| %>
+      		<% @user.followed_users.limit(5).each do |user| %>
       			<% if user.profile %>
 	      			<% if user.profile.profileimage %>
 	      				<%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "avatar.png")), profile_path(user.profile) %>
@@ -26,12 +27,13 @@
 	<strong id="followed" class="relationstats">
 		<%= link_to "Followers", followers_user_path(@user) %>
 		<span class="badge"><%= @user.followers.count %></span>
+		<%= link_to "List All", followers_user_path(@user), class: "pull-right" %>
 		<br>
 	</strong>
 	</div>
 	<div class="panel-body">
 		<% if @user.followers.any? %>
-      		<% @user.followers.each do |user| %>
+      		<% @user.followers.limit(5).each do |user| %>
       			<% if user.profile %>
       				<% if user.profile.profileimage %>
 	      				<%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "avatar.png")), profile_path(user.profile) %>
@@ -45,3 +47,4 @@
       	<% end %>
 	</div>
 </div>
+
