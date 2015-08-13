@@ -4,6 +4,9 @@ class HomeController < ApplicationController
   def index
   	if user_signed_in?
 	  	# @goals = current_user.goals.order_created
+	  	@user ||= current_user
+	  	@followed_users = @user.followed_users.limit(5)
+	  	@followers = @user.followers.limit(5)
 	  	@goal = Goal.new
 	  	@feed_items = current_user.feed.order_completed
 	  	@profile = current_user.profile

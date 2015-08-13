@@ -10,7 +10,7 @@
 	</div>
 	<div class="panel-body">
 		<% if @user.followed_users.any? %>
-      		<% @user.followed_users.limit(5).each do |user| %>
+      		<% @followed_users.each do |user| %>
       			<% if user.profile %>
 	      			<% if user.profile.profileimage %>
 	      				<%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "avatar.png")), profile_path(user.profile) %>
@@ -33,7 +33,7 @@
 	</div>
 	<div class="panel-body">
 		<% if @user.followers.any? %>
-      		<% @user.followers.limit(5).each do |user| %>
+      		<% @followers.each do |user| %>
       			<% if user.profile %>
       				<% if user.profile.profileimage %>
 	      				<%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "avatar.png")), profile_path(user.profile) %>

@@ -4,15 +4,18 @@
 		<div class="footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4">
-						<h4><span class="glyphicon glyphicon-envelope pull-left" aria-hidden="true"></span>&nbsp <%= link_to "Contact", new_contact_path %></h4>
-						<h4><span class="glyphicon glyphicon-star pull-left" aria-hidden="true"></span>&nbsp <%= link_to "Feedback", new_contact_path(filter: "feedback") %></h4>
+					<div class="col-sm-4 text-center">
+					<% if user_signed_in? %>
+						<h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp <%= link_to "Contact", new_contact_path %>  |  
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp <%= link_to "Feedback", new_contact_path(filter: "feedback") %></h4>
+					<% end %>
+					</div>
+					<div class="col-sm-4 text-center">
+						<h4>Goalkeeper</h4>
 					</div>
 					<div class="col-sm-4">
-						
-					</div>
-					<div class="col-sm-4">
-						
+						<p><strong>This app is in beta, there will be bugs!</strong></p>
+						<p>If you like this app let me know. If you don't like it also let me know and tell me how I could make it more suited to you.</p>
 					</div>
 				</div>
 			</div>

@@ -20,9 +20,9 @@
 			<%# link_to "Complete", @profile.user.goals.complete %>
 
 		<div class="feed">
-			<%# render @mygoalsfeed %>
 			<%= render @goals %>
 		</div>
+		<%# will_paginate @goals %>
 
 	</div>
 

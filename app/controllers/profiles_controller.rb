@@ -15,16 +15,18 @@ class ProfilesController < ApplicationController
     @goal = Goal.new
     @profiles = Profile.all
     @usergoals = @profile.user.goals.completed
-    @goals = @profile.user.goals.order_created
+    @goals = @profile.user.goals.paginate(:page => params[:page], :per_page => 15).order_created
     @completed_goals = @profile.user.goals.completed.order_created
     @incomplete_goals = @profile.user.goals.incomplete.order_created
     @complete_before_enddate = @profile.user.goals.complete_before_enddate
+    @followed_users = @profile.user.followed_users.limit(6)
+    @followers = @profile.user.followers.limit(6)
 
     if params[:filter]
       if params[:filter] == "complete"
-        @goals = @profile.user.goals.completed.order_created
+        @goals = @profile.user.goals.paginate(:page => params[:page], :per_page => 15).completed.order_created
       elsif params[:filter] == "incomplete"
-        @goals = @profile.user.goals.incomplete.order_created
+        @goals = @profile.user.goals.paginate(:page => params[:page], :per_page => 15).incomplete.order_created
       end
     end
   end
