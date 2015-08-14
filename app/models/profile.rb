@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
 
 		mount_uploader :profileimage, ProfilePicUploader
 
+		validates :fname, :lname, presence: true
+
 	def name
 		name = "#{fname} " + "#{lname}"
 	end
