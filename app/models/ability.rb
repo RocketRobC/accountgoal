@@ -8,9 +8,9 @@ class Ability
       if user.admin?
         can :manage, :all
       elsif user.has_role? :goalsetter
-        can :manage, :profiles
-        can :manage, :goals
-    else
+        can :manage, Profile
+        can :manage, Goal
+      else
         can :read, :all
       end
     #

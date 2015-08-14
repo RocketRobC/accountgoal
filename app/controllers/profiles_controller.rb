@@ -5,7 +5,11 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    if current_user.has_role? :admin
+      @profiles = Profile.all
+    else
+      redirect_to home_index_path
+    end
   end
 
   # GET /profiles/1

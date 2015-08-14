@@ -8,4 +8,10 @@ class Profile < ActiveRecord::Base
 	def name
 		name = "#{fname} " + "#{lname}"
 	end
+
+	def self.search(search)
+    	where('name  ILIKE ?', "%#{search}%")
+    	where('city ILIKE ?', "%#{search}%")
+    	where('country ILIKE ?', "%#{search}%")
+  	end
 end
