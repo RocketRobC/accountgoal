@@ -1,15 +1,12 @@
 class ProfilesController < ApplicationController
   prepend_before_action :set_profile, only: [:show, :destroy]
+  prepend_before_action :admin_pass, only: [:index] 
 
 
   # GET /profiles
   # GET /profiles.json
   def index
-    if current_user.has_role? :admin
-      @profiles = Profile.all
-    else
-      redirect_to home_index_path
-    end
+
   end
 
   # GET /profiles/1

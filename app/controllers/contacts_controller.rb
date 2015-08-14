@@ -1,10 +1,11 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  prepend_before_action :admin_pass, only:[:index]
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    
   end
 
   # GET /contacts/1
