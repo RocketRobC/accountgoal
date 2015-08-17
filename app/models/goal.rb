@@ -6,7 +6,7 @@ class Goal < ActiveRecord::Base
 	# validate :start_before_ends
 
 	def self.future_events
-		where("starts > ?", DateTime.now.beginning_of_day)
+		where("starts > ?", DateTime.current.beginning_of_day)
 	end
 
 	def start_before_ends
@@ -20,7 +20,7 @@ class Goal < ActiveRecord::Base
 	end
 
 	def starts_in_future
-		if startdate.present? && startdate <= DateTime.now.beginning_of_day
+		if startdate.present? && startdate <= DateTime.current.beginning_of_day
 			errors.add(:startdate, "Start date can't be before the current date")
 		end
 	end
@@ -50,7 +50,7 @@ class Goal < ActiveRecord::Base
 	end
 
 	def self.previous_week
-	  	where(completed_at: DateTime.now.beginning_of_day - 7.days..DateTime.now.beginning_of_day - 14.days)
+	  	where(completed_at: DateTime.current.beginning_of_day - 7.days..DateTime.current.beginning_of_day - 14.days)
 	end
 
 	def self.complete_before_enddate

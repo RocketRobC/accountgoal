@@ -5,7 +5,7 @@
 <div class="col-sm-4">
   <h2><strong>Goalsetter Profile</strong></h2>
     <p>
-      <%= cl_image_tag(@profile.profileimage, :width => 200, :default_image => "avatar.png", class: "img-thumbnail") %>
+        <%= cl_image_tag(current_user.profile.profileimage.url, :width => 200, class: "img-thumbnail") %>
     </p>
     <p>
       <h3><strong><%= @profile.fname %> <%= @profile.lname %></strong></h3>

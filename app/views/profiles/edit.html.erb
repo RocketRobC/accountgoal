@@ -1,6 +1,9 @@
-<%= link_to 'Home', home_index_path %>
 <div><h1>Edit Your Profile</h1>
-<%= image_tag(current_user.profile.profileimage.url, :width => 100, class: "img-thumbnail") %>
+	<%# if current_user.profile.profileimage == nil %>
+		<%# cl_image_tag("avatar.png", :width => 100, class: "img-thumbnail") %>
+	<%# else %>
+		<%= cl_image_tag(current_user.profile.profileimage.url, :width => 200, class: "img-thumbnail") %>
+	<%# end %>
 </div>
 
 
