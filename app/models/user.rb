@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   # devise :omniauthable, :omniauth_providers => [:facebook]
 
   after_create :assign_goalsetter_role
-  after_create :create_profile
+  after_create :initial_create_profile
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   	self.add_role :goalsetter
   end
 
-  def create_profile
+  def initial_create_profile
     self.profile = Profile.new
   end
 
