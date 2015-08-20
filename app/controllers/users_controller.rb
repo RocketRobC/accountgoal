@@ -22,12 +22,11 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.all
-		if params[:search]
-			@users = User.search(params[:search])
-		else
-			@users = User.all.order("email ASC")
-		end
-
+			if params[:search]
+				@users = User.search(params[:search])
+			else
+				@users = User.all.order("email ASC")
+			end
 		@profiles = Profile.all
 	end
 

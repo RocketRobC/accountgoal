@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
-  prepend_before_action :set_profile, only: [:show, :destroy]
-  prepend_before_action :admin_pass, only: [:index] 
+  prepend_before_action :set_profile, except: [:index]
+  prepend_before_action :admin_pass, only: [:index]
+  skip_before_action :profile_check
 
 
   # GET /profiles
@@ -36,7 +37,6 @@ class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
     @profile.user = current_user
-
   end
 
   # GET /profiles/1/edit
@@ -68,7 +68,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to edit_profile_path, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to profile_path(current_user.profile), notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }

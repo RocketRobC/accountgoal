@@ -1,14 +1,22 @@
 class Profile < ActiveRecord::Base
 		belongs_to :user
 
-		default_scope -> { order(fname: :desc) }
+		# default_scope -> { order(fname: :desc) }
 
 		mount_uploader :profileimage, ProfilePicUploader
 
-		# validates :fname, :lname, presence: true
+		validates :fname, :lname, presence: true, on: :update
+
+	def complete?
+		!incomplete?
+	end
+
+	def incomplete?
+		fname.blank? || lname.blank?
+	end
 
 	def name
-		name = "#{fname} " + "#{lname}"
+		"#{fname} #{lname}"
 	end
 
 	def self.search(search)

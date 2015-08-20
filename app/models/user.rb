@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def initial_create_profile
-    self.profile = Profile.new
+    create_profile!
   end
 
   def follow!(other_user)

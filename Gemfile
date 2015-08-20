@@ -58,6 +58,7 @@ group :development, :test do
   gem "quiet_assets"
   gem "annotate"
   gem "rails_best_practices"
+  gem "rspec-rails"
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -69,4 +70,3 @@ end
   gem "rails_12factor"
 
 end
-

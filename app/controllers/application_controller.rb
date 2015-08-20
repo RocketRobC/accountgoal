@@ -4,8 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :setgoals, only: [:show, :edit, :index]
+  before_action :profile_check
 
-	def setgoals
+	def profile_check
+    if user_signed_in? && current_user.profile.incomplete?
+      redirect_to edit_profile_path(current_user.profile)
+    end
+  end
+
+  def setgoals
 	   @allgoals = Goal.completed
 	end
 

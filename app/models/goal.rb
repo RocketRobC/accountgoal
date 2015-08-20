@@ -14,8 +14,8 @@ class Goal < ActiveRecord::Base
 			if startdate > enddate
 				errors.add(:enddate, "End date can't be earlier than the start date")
 			end
-		else 
-			errors.add(:enddate, "Your goal needs and end date.")
+		else
+			errors.add(:enddate, "Your goal needs an end date.")
 		end
 	end
 
