@@ -1,7 +1,7 @@
 <% unless user_signed_in? %>
-  
+
   <%= render "homepage" %>
-  
+
 <% else %>
 
 	<div class="row">
@@ -17,7 +17,7 @@
 		<section class="relationstats">
 	        <%= render 'shared/relationstats' %>
 	    </section>
-	    
+
 	    <br>
 	     	<%= render "shared/usersearch" %>
 	      	<%# link_to "List all users", users_path %>
@@ -27,7 +27,7 @@
         	<%= column_chart @allgoals.group_by_week(:completed_at, format: "%d %b", week_start: :mon, range: 11.months.ago.midnight..DateTime.now).count %>
         </div>
     </div>
-		
+
 	<div class="col-md-8">
 	  <div class="feedborder">
 	    <%= render "goals/goalfeed" %>

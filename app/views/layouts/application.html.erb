@@ -30,21 +30,21 @@
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 
 </head>
-<body>
-<% unless user_signed_in? %>
-	<div class="background">
-<% end %>
+  <body>
 
-	<%= render "layouts/navbar" %>
+    <% unless user_signed_in? %>
+    	<div class="background">
+    <% end %>
 
-<div class="container">
-<div class="homemargin">
-		<%= yield %>
-</div>
-</div>
-<br>
-	<%= render "layouts/footer" %>
-	
+    	<%= render "layouts/navbar" %>
 
-</body>
+    <div class="container">
+    <div class="homemargin">
+    		<%= yield %>
+    </div>
+    </div>
+    <br>
+    	<%= render "layouts/footer" %>
+
+  </body>
 </html>
