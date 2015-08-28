@@ -35,11 +35,11 @@
 		<% if @user.followers.any? %>
       		<% @followers.each do |user| %>
       			<% if user.profile %>
-      				<% if user.profile.profileimage %>
-	      				<%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "avatar.png")), profile_path(user.profile) %>
-	      			<% else %>
-	      				<%= user.profile.name %>
-	      			<% end %>
+							<% if user.profile.profileimage.url == nil %>
+								<%= link_to "#{user.profile.initials}", profile_path(user), class: "initials" %>
+							<% else %>
+								<%= link_to (cl_image_tag(user.profile.profileimage, :default_image => "avatar.png", :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(user.profile) %>
+		      		<% end %>
       			<% else %>
       				<%= user.email %>
       			<% end %>
