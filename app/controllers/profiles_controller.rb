@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
   prepend_before_action :admin_pass, only: [:index]
   skip_before_action :profile_check
 
-
   # GET /profiles
   # GET /profiles.json
   def index
@@ -97,4 +96,5 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(:user_id, :fname, :lname, :city, :country, :profileimage)
     end
+
 end

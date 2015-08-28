@@ -12,8 +12,8 @@
 
 			<%= link_to "New Goal", new_goal_path, method: :get, class: "btn btn-warning" %>
 		<div class="pull-right">
-			<%= link_to "Complete", home_index_path(filter: 'complete'), method: :get %> | 
-			<%= link_to "Incomplete", home_index_path(filter: 'incomplete'), method: :get %> | 
+			<%= link_to "Complete", home_index_path(filter: 'complete'), method: :get %> |
+			<%= link_to "Incomplete", home_index_path(filter: 'incomplete'), method: :get %> |
 			<%= link_to "All", home_index_path, method: :get %>
 		</div>
 		<!-- <div class="pull-right"> -->
@@ -47,7 +47,13 @@
 							<div class="col-sm-2">
 								<div class="text-center">
 									<% if goal.user.profile %>
-										<div><%= link_to (cl_image_tag(goal.user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max, :default_image => "avatar.png")), profile_path(goal.user.profile), method: :get %></div>
+										<div>
+											<% if goal.user.profile.profileimage.url == nil %>
+												<%= cl_image_tag "avatar.png", :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max %>
+											<% else %>
+												<%= link_to (cl_image_tag(goal.user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(goal.user.profile), method: :get %>
+											<% end %>
+										</div>
 									<% end %>
 
 									<% if goal.complete %>
@@ -59,7 +65,7 @@
 										<p><strong><%= "Not Complete" %></strong></p>
 									<% end %>
 								</div>
-								
+
 							</div>
 						</div>
 					</div>
@@ -77,7 +83,7 @@
 		e.preventDefault()
 		$(this).tab('show')
 	})
-	
+
 	$('#goalFeed a').click(function (e) {
 		e.preventDefault()
 		$(this).tab('show')

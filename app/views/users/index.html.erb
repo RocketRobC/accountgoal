@@ -1,11 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<% if params[:search] %>
+<% if params["search"] %>
   <% if @users.present? %>
     <h2>Results...</h2>
   <% else %>
-    <h3>There are no users with the name <%= params[:search] %></h3>
-    <p><%= link_to "Back", home_index_path %></p>
+    <% if params[:search] == "" %>
+      <h3>Your search was empty</h3>
+    <% else %>
+      <h3>There are no users with the name <%= params[:search] %></h3>
+    <% end %>
+      <p><%= link_to "Back", home_index_path %></p>
   <% end %>
 <% end %>
 
@@ -40,5 +44,3 @@
     </tbody>
   </div>
 </table>
-
-

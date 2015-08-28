@@ -19,6 +19,10 @@ class Profile < ActiveRecord::Base
 		"#{fname} #{lname}"
 	end
 
+	def initials
+		"#{fname}"[0,1] + "#{lname}"[0,1]
+	end
+
 	def self.search(search)
     	where('name  ILIKE ?', "%#{search}%")
     	where('city ILIKE ?', "%#{search}%")

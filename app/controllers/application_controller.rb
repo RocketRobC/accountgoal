@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
 	def profile_check
     if user_signed_in? && current_user.profile.incomplete?
+      flash[:notice] = "Please complete your profile!"
       redirect_to edit_profile_path(current_user.profile)
     end
   end

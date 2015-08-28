@@ -91,7 +91,7 @@ $badge-border-radius:       10px !default;
 }
 
 .search {
-	margin-bottom: 15px; 
+	margin-bottom: 15px;
 }
 
 .searchbar {
@@ -146,7 +146,7 @@ th, td {
           border-bottom-color: transparent;
           border-top-color: #f27f05;
           border-top-width: 2px;
-          } 
+          }
 
 .custom-btn {
   width: 270px !important;
@@ -191,6 +191,13 @@ th, td {
 	padding: 15px;
 }
 
+.initials {
+  font-size: 3em;
+  font-weight: bold;
+  padding: 4px;
+  vertical-align: middle;
+}
+
 .apple_pagination {
   background: #f8f8f8;
   /*border: 1px solid #e5e5e5;*/
@@ -221,6 +228,8 @@ th, td {
     color: black; }
     .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
+
+
 
 /*footer {
 	display: block;
