@@ -49,7 +49,7 @@
 									<% if goal.user.profile %>
 										<div>
 											<% if goal.user.profile.profileimage.url == nil %>
-												<%= cl_image_tag "avatar.png", :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max %>
+												<%= link_to (cl_image_tag "avatar.png", :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max), profile_path(goal.user.profile), method: :get %>
 											<% else %>
 												<%= link_to (cl_image_tag(goal.user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(goal.user.profile), method: :get %>
 											<% end %>

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  prepend_before_action :set_profile, except: [:index]
   prepend_before_action :admin_pass, only: [:index]
+  prepend_before_action :set_profile, except: [:index]
   skip_before_action :profile_check
 
   # GET /profiles

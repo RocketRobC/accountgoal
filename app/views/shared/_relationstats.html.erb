@@ -13,7 +13,7 @@
       		<% @followed_users.each do |user| %>
       			<% if user.profile %>
 	      			<% if user.profile.profileimage.url == nil %>
-								<%= link_to "#{user.profile.initials}", profile_path(user), class: "initials" %>
+								<%= link_to "#{user.profile.initials}", profile_path(user.profile), class: "initials" %>
 	      			<% else %>
 	      				<%= link_to (cl_image_tag(user.profile.profileimage, :default_image => "avatar.png", :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(user.profile) %>
 	      			<% end %>
@@ -36,7 +36,7 @@
       		<% @followers.each do |user| %>
       			<% if user.profile %>
 							<% if user.profile.profileimage.url == nil %>
-								<%= link_to "#{user.profile.initials}", profile_path(user), class: "initials" %>
+								<%= link_to "#{user.profile.initials}", profile_path(user.profile), class: "initials" %>
 							<% else %>
 								<%= link_to (cl_image_tag(user.profile.profileimage, :default_image => "avatar.png", :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(user.profile) %>
 		      		<% end %>
