@@ -27,7 +27,11 @@
         <tr style="padding: 5px">
           <% unless current_user == user %>
             <% if user.profile %>
-              <td><%= link_to (cl_image_tag(user.profile.profileimage, :default_image => "avatar.png", :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(user.profile) %>
+              <td><% if user.profile.profileimage.url == nil %>
+                    <%= cl_image_tag "avatar.png", :width => 50, :heigh => 50, :crop => :thumb, :radius => :max %>
+                  <% else %>
+                    <%= link_to (cl_image_tag(user.profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(user.profile) %>
+                  <% end %>
               <td><%= link_to user.profile.name, user.profile %></td>
             <% else %>
               <td><%= user.email %></td>

@@ -20,7 +20,7 @@ class Profile < ActiveRecord::Base
 	end
 
 	def initials
-		"#{fname}"[0,1] + "#{lname}"[0,1]
+		"#{fname}"[0,1].capitalize + "#{lname}"[0,1].capitalize
 	end
 
 	def self.search(search)
