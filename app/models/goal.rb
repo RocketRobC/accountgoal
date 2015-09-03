@@ -1,6 +1,7 @@
 class Goal < ActiveRecord::Base
 	belongs_to :user
 	# default_scope -> { order(updated_at: :desc) }
+	# scope :desc, -> { order("goals.completed_at DESC") }
 	validates :startdate, :enddate, :name, presence: true
 	# validate :starts_in_future
 	# validate :start_before_ends

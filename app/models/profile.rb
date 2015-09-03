@@ -23,6 +23,11 @@ class Profile < ActiveRecord::Base
 		"#{fname}"[0,1].capitalize + "#{lname}"[0,1].capitalize
 	end
 
+	def capitalize_first_letter
+		self.sub(/^./) { $1.capitalize }
+	end
+
+
 	def self.search(search)
     	where('name  ILIKE ?', "%#{search}%")
     	where('city ILIKE ?', "%#{search}%")

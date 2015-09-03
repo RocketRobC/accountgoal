@@ -126,9 +126,10 @@ th, td {
 .navbar {
     position: relative;
     min-height: 60px;
-    margin-bottom: 18px;
-    padding-top: 10px;
-    border: 1px solid transparent;
+    margin-bottom: 10px;
+    padding-top: 0px;
+    border: 0px solid transparent;
+    vertical-align: middle;
    }
 
    .navbar-brand {
@@ -193,7 +194,7 @@ th, td {
 
 .initials {
   font-size: 2.8em;
-  font-weight: bold;
+  font-weight: normal;
   padding: 3px;
   vertical-align: middle;
 }

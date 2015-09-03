@@ -8,9 +8,9 @@ class HomeController < ApplicationController
 	  	@followed_users = @user.followed_users.limit(6)
 	  	@followers = @user.followers.limit(6)
 	  	@goal = Goal.new
-	  	@feed_items = current_user.feed.order_completed
+	  	@feed_items = current_user.feed.order_updated
 	  	@profile = current_user.profile
-	  	@mygoalsfeed = current_user.goals.order_created
+	  	@mygoalsfeed = current_user.goals.order_completed
 	  	@usergoals = @profile.user.goals.completed
 	  	@goals = @profile.user.goals.order_created
 	  	@completed_goals = @profile.user.goals.completed.order_created

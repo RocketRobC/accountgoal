@@ -8,10 +8,10 @@
       <%= other_user_profileimage %>
     </p>
     <p>
-      <h3><strong><%= @profile.fname %> <%= @profile.lname %></strong></h3>
+      <h3><strong><%= @profile.fname.humanize %> <%= @profile.lname.humanize %></strong></h3>
     </p>
     <p>
-      <strong><%= @profile.city %>, <%= @profile.country %></strong>
+      <strong><%= @profile.city.humanize %>, <%= @profile.country %></strong>
     </p>
 
     <% if current_user.profile == @profile %>
