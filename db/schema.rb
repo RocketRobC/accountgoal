@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810112339) do
+ActiveRecord::Schema.define(version: 20150904064826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20150810112339) do
 
   add_index "controllers", ["email"], name: "index_controllers_on_email", unique: true, using: :btree
   add_index "controllers", ["reset_password_token"], name: "index_controllers_on_reset_password_token", unique: true, using: :btree
+
+  create_table "encouragements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "encouragements", ["goal_id"], name: "index_encouragements_on_goal_id", using: :btree
+  add_index "encouragements", ["user_id"], name: "index_encouragements_on_user_id", using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.datetime "startdate"
@@ -125,4 +135,6 @@ ActiveRecord::Schema.define(version: 20150810112339) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  add_foreign_key "encouragements", "goals"
+  add_foreign_key "encouragements", "users"
 end

@@ -5,14 +5,10 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-  # has_many :active_relationships, class_name: "Relationship",
-  								# foreign_key: "follower_id",
-  								# dependent: :destroy
-  # has_many :passive_relationships, class_name: "Relationship",
-  								# foreign_key: "followed_id",
-  								# dependent: :destroy
-  # has_many :following, through: :active_relationships, source: :followed
-  # has_many :followers, through: :passive_relationships
+
+  has_many :encouragements, dependent: :destroy
+  has_many :encouraged_goals, :through => :encouragements, :source => :goal
+
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -62,6 +58,18 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     where('email  ILIKE ?', "%#{search}%")
+  end
+
+  def given_encouragement?
+    encouragements.find_by(@goal.id)
+  end
+
+  def gives_encouragement(goal)
+    encournagements.create!(user_id: goal.id)
+  end
+
+  def removes_encouragement(goal)
+    encournagements.find_by(user_id: goal.id).destroy
   end
 
 end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'encouragements/create'
+
+  get 'encouragements/destroy'
+
   resources :contacts
 
   root 'home#index'
@@ -15,7 +19,9 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :relationships,       only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :encouragements, only: [:create, :destroy]
+
   get 'admin', to: 'admin#index'
   get "home/index"
 
@@ -25,7 +31,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  
+
 
 
   # Example of regular route:
