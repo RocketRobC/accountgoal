@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'encouragements/create'
 
-  get 'encouragements/destroy'
+# post 'encouragements' => 'encouragements#create'
 
   resources :contacts
 
@@ -20,7 +19,11 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-  resources :encouragements, only: [:create, :destroy]
+  resources :encouragements, only: [:new, :create, :destroy] do
+    member do
+      post :encourage
+    end
+  end
 
   get 'admin', to: 'admin#index'
   get "home/index"

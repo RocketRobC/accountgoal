@@ -5,7 +5,7 @@
 						<h4><strong><%= goal.name %></strong></h4>
 						<p><strong>Starts </strong><%= goal.startdate.strftime("%v") %>  <strong>Ends </strong><%= goal.enddate.strftime("%v") %></p>
 						<p><%= goal.details %></p>
-							<%= link_to 'Edit', edit_goal_path(goal), method: :get %> | 
+							<%= link_to 'Edit', edit_goal_path(goal), method: :get %> |
 							<%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
 					</div>
 					<div class="col-sm-2">
@@ -14,11 +14,11 @@
 								<h4 class="orgtxt"><strong><%= "Complete!" %></strong></h4>
 								<p><%= goal.completed_at.strftime("%v") if goal.completed_at %></p>
 							<% else %>
-								<%= link_to "Complete", completed_goal_path(goal), method: :patch, class: "btn btn-warning" %> 
-							<% end %>		
+								<%= link_to "Complete", completed_goal_path(goal), method: :patch, class: "btn btn-warning" %>
+							<% end %>
 						</div>
 					</div>
-							
+
 				<% else %>
 					<div class="col-md-10">
 						<h4><strong><%= goal.name %></strong></h4>
@@ -37,7 +37,7 @@
 							<% end %>
 						</div>
 					</div>
-				<% end %>	
+				<% end %>
 
 			</div>
 </div>

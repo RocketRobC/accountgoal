@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
 
   has_many :encouragements, dependent: :destroy
-  has_many :encouraged_goals, :through => :encouragements, :source => :goal
 
   rolify
   # Include default devise modules. Others available are:
@@ -60,12 +59,12 @@ class User < ActiveRecord::Base
     where('email  ILIKE ?', "%#{search}%")
   end
 
-  def given_encouragement?
-    encouragements.find_by(@goal.id)
+  def given_encouragement?(goal)
+    encouragements.find_by(@goal_id)
   end
 
-  def gives_encouragement(goal)
-    encournagements.create!(user_id: goal.id)
+  def give_encouragement
+    encouragements.create!
   end
 
   def removes_encouragement(goal)

@@ -26,4 +26,13 @@ class ApplicationController < ActionController::Base
       end
   end
 
+private
+
+    def require_login
+      unless current_user.id = params[:id]
+        flash[:error] = "You are not authorised to access this page"
+        redirect_to root_path
+      end
+    end
+
 end

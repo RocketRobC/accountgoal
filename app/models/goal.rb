@@ -1,11 +1,11 @@
 class Goal < ActiveRecord::Base
 	belongs_to :user
 	has_many :encouragements
-	has_many :encouraging_users, :through => :encouragements, :source => :user
-	
+
 	# default_scope -> { order(updated_at: :desc) }
 	# scope :desc, -> { order("goals.completed_at DESC") }
 	validates :startdate, :enddate, :name, presence: true
+
 	# validate :starts_in_future
 	# validate :start_before_ends
 

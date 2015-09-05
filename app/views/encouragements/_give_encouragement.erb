@@ -1,0 +1,6 @@
+
+<%= form_for(current_user.encouragements.build(user_id: @goal.id), remote: false) do |f| %>
+	<div><%= f.hidden_field :user_id %></div>
+	<%= f.submit "Encourage!", class: "btn btn-primary" %>
+<% end %>
+ <%= link_to "Encourage!", encouragements_path(user_id: current_user.id, goal_id: @goal.id), method: :post %>

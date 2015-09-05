@@ -1,2 +1,5 @@
-<h1>Encouragements#create</h1>
-<p>Find me in app/views/encouragements/create.html.erb</p>
+<% if current_user.given_encouragement?(@goal) %>
+  <%= render "give_encouragement" %>
+<% else %>
+  <%= "working on the next step..." %>
+<% end %>

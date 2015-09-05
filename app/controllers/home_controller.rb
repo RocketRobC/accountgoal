@@ -17,6 +17,8 @@ class HomeController < ApplicationController
 	  	@incomplete_goals = @profile.user.goals.incomplete.order_created
 	  	@complete_before_enddate = @profile.user.goals.complete_before_enddate
 
+			@encouragements = @user.given_encouragement?(@goal)
+
 	  	if params[:filter]
 	  		if params[:filter] == 'complete'
 	  			@goals =  @profile.user.goals.completed.order_created
