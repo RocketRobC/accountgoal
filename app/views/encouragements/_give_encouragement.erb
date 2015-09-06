@@ -1,3 +1,5 @@
+<% if current_user(@goal.user) %>
+<% else %>
 
 <%= form_for(current_user.encouragements.build(user_id: @goal.id), remote: false) do |f| %>
 	<div><%= f.hidden_field :user_id %></div>

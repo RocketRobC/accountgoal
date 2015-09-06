@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def given_encouragement?(goal)
-    encouragements.find_by(@goal_id)
+    encouragements.find_by(goal_id: goal.id)
   end
 
   def give_encouragement

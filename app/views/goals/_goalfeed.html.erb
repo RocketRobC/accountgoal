@@ -36,7 +36,7 @@
 								<h4><strong><%= goal.name %></strong></h4>
 								<p>
 								<% if goal.user.profile %>
-				      				<%= goal.user.profile.name %>
+				      				<%= goal.user.profile.name.humanize %>
 				      			<% else %>
 				      				<%= goal.user.email %>
 				      			<% end %>
@@ -56,9 +56,15 @@
 										</div>
 									<% end %>
 
-									<%= render "encouragements/give_encouragement" %>
-									<%= link_to "Encourage2", encouragements_path(user_id: current_user.id, goal_id: goal.id), method: :post %>
-									<!-- <%= link_to "Encourage", encourage_encouragement_path(goal), method: :post %> -->
+									<%# render "encouragements/give_encouragement" %>
+									<% if goal.user == current_user %>
+									<% else %>
+										<% if current_user.given_encouragement?(goal) %>
+											<a>Nice one!</a>
+										<% else %>
+											<%= link_to "Encourage!", encouragements_path(user_id: current_user.id, goal_id: goal.id), method: :post %>
+										<% end %>
+									<% end %>
 									<%= goal.encouragements.count %>
 
 									<% if goal.complete %>
