@@ -1,11 +1,13 @@
 class Profile < ActiveRecord::Base
-		belongs_to :user
+	belongs_to :user
 
-		# default_scope -> { order(fname: :desc) }
+	# default_scope -> { order(fname: :desc) }
 
-		mount_uploader :profileimage, ProfilePicUploader
+	mount_uploader :profileimage, ProfilePicUploader
 
-		validates :fname, :lname, presence: true, on: :update
+	validates :fname, :lname, presence: true, on: :update
+
+	scope :search, -> (str) { var = "%#{str}%"; where('city ILIKE ? or country ILIKE ?', var, var) }
 
 	def complete?
 		!incomplete?
@@ -27,10 +29,4 @@ class Profile < ActiveRecord::Base
 		self.sub(/^./) { $1.capitalize }
 	end
 
-
-	def self.search(search)
-    	where('name  ILIKE ?', "%#{search}%")
-    	where('city ILIKE ?', "%#{search}%")
-    	where('country ILIKE ?', "%#{search}%")
-  	end
 end

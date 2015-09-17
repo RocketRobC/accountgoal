@@ -1,5 +1,5 @@
 <div class="search">
-    <%= form_tag(users_path, method: :get, id: "search-form") do %>
+    <%= form_tag(profiles_path, method: :get, id: "search-form") do %>
         <div class="searchbar">
           	<%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control"%>
         </div>

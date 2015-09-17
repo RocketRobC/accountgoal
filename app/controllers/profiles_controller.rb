@@ -1,12 +1,13 @@
 class ProfilesController < ApplicationController
-  prepend_before_action :admin_pass, only: [:index]
+  # prepend_before_action :admin_pass, only: [:index]
   prepend_before_action :set_profile, except: [:index]
   skip_before_action :profile_check
 
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    search_string = params[:search]
+    @profiles = Profile.search(search_string) if search_string.present?
   end
 
   # GET /profiles/1
@@ -87,6 +88,11 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+    def filtering_params(params)
+      params.slice(:uname, :city, :country)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.find(params[:id])

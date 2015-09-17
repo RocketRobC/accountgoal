@@ -1,23 +1,14 @@
 class EncouragementsController < ApplicationController
 
-  def encourage
-    @encourage = Encouragement.create!(user_id: params[:user_id], goal_id: params[:goal_id])
-    if @encourage.save
-      flash[:warning] = "Something is working"
-    else
-      flash[:warning] = "It's still broken, you didn't really want to do that."
-    end
-    redirect_to :back
-  end
-
   def create
-    @encourage = Encouragement.create!(user_id: params[:user_id], goal_id: params[:goal_id])
+    @goal = Goal.find(params[:goal_id])
+    @encourage = Encouragement.create!(user: current_user, goal: @goal)
     if @encourage.save
       flash[:warning] = "Something is working"
     else
       flash[:warning] = "It's broken, you didn't really want to do that."
     end
-    redirect_to :back
+    # redirect_to :back
   end
 
   # def create

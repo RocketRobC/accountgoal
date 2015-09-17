@@ -1,35 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Profiles</h1>
+<% if params["search"] %>
+  <% if @profiles.present? %>
+    <h2>Results...</h2>
+  <% else %>
+    <% if params[:search] == "" %>
+      <h3>Your search was empty</h3>
+    <% else %>
+      <h3>There are no users with the name <%= params[:search] %></h3>
+    <% end %>
+      <p><%= link_to "Back", home_index_path %></p>
+  <% end %>
+<% end %>
 
 <table>
   <thead>
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>City</th>
-      <th>Country</th>
-      <th>Profile Image</th>
+      <!-- <th>User Name</th> -->
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @profiles.each do |profile| %>
-      <tr>
-        <td><%= profile.fname %></td>
-        <td><%= profile.lname %></td>
-        <td><%= profile.city %></td>
-        <td><%= profile.country %></td>
-        <td><%= profile.profileimage %></td>
-        <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <div class="user_follow">
+    <tbody>
+      <% @profiles.each do |profile| %>
+        <tr style="padding: 5px">
+          <% unless current_user.profile == profile %>
+              <td><% if profile.profileimage.url == nil %>
+                    <%= cl_image_tag "avatar.png", :width => 50, :heigh => 50, :crop => :thumb, :radius => :max %>
+                  <% else %>
+                    <%= link_to (cl_image_tag(profile.profileimage, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max)), profile_path(profile) %>
+                  <% end %>
+              <td><%= link_to profile.name, profile %></td>
+
+              <td><% if current_user.following?(profile.user) %>
+              	 <%= render "users/unfollow", user: profile.user %>
+              	<% else %>
+              	 <%= render "users/follow", user: profile.user %>
+              	<% end %>
+              </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </div>
 </table>
-
-<br>
-
-<%= link_to 'New Profile', new_profile_path %>

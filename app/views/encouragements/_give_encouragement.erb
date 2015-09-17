@@ -1,8 +1,11 @@
-<% if current_user(@goal.user) %>
-<% else %>
-
-<%= form_for(current_user.encouragements.build(user_id: @goal.id), remote: false) do |f| %>
-	<div><%= f.hidden_field :user_id %></div>
-	<%= f.submit "Encourage!", class: "btn btn-primary" %>
-<% end %>
- <%= link_to "Encourage!", encouragements_path(user_id: current_user.id, goal_id: @goal.id), method: :post %>
+<div id="encouragement_for_goal_<%= goal.id %>">
+	<% if goal.user == current_user %>
+	<% else %>
+		<% if current_user.given_encouragement?(goal) %>
+			Nice one!
+		<% else %>
+			<%= link_to "Encourage!", encouragements_path(goal_id: goal.id), method: :post, remote: true %>
+		<% end %>
+	<% end %>
+	<%= goal.encouragements.count %>
+</div>
