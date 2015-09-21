@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
 
 	validates :fname, :lname, presence: true, on: :update
 
-	scope :search, -> (str) { var = "%#{str}%"; where('city ILIKE ? or country ILIKE ?', var, var) }
+	scope :search, -> (str) { var = "%#{str}%"; where('city ILIKE ? or country ILIKE ? or fname ILIKE ? or lname ILIKE ?', var, var, var, var) }
 
 	def complete?
 		!incomplete?
@@ -18,7 +18,7 @@ class Profile < ActiveRecord::Base
 	end
 
 	def name
-		"#{fname} #{lname}"
+		"#{fname}"[0,100].capitalize + " " + "#{lname}"[0,100].capitalize
 	end
 
 	def initials
