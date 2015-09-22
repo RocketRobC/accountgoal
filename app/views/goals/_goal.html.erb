@@ -24,7 +24,11 @@
 						<h4><strong><%= goal.name %></strong></h4>
 						<p><strong>Starts </strong><%= goal.startdate.strftime("%v") %>  <strong>Ends </strong><%= goal.enddate.strftime("%v") %></p>
 						<p><%= goal.details %></p>
+
+					<%= render "encouragements/give_encouragement", goal: goal%>
+
 					</div>
+					
 					<div class="col-sm-2">
 						<div class="text-center">
 							<% if goal.complete %>

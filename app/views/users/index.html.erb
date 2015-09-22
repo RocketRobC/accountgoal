@@ -7,7 +7,7 @@
     <% if params[:search] == "" %>
       <h3>Your search was empty</h3>
     <% else %>
-      <h3>There are no users with the name <%= params[:search] %></h3>
+      <h3>There are no results for <%= params[:search] %></h3>
     <% end %>
       <p><%= link_to "Back", home_index_path %></p>
   <% end %>
