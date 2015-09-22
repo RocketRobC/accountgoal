@@ -4,7 +4,7 @@ class EncouragementsController < ApplicationController
     @goal = Goal.find(params[:goal_id])
     @encourage = Encouragement.create!(user: current_user, goal: @goal)
     if @encourage.save
-      flash[:warning] = "Something is working"
+      EncouragementMailer.encouragement_received(current_user, @goal.id).deliver_later
     else
       flash[:warning] = "It's broken, you didn't really want to do that."
     end
