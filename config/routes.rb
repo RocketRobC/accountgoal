@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   root 'home#index'
   # devise_for :controllers
   resources :goals do
-   member do
+    member do
       patch :completed
+      post :encourage
     end
+    # resources :encouragements, only: [:create]
   end
   resources :profiles
   devise_for :users, :controllers => { :registrations => "registrations" }
@@ -19,11 +21,8 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-  resources :encouragements, only: [:new, :create, :destroy] do
-    member do
-      post :encourage
-    end
-  end
+
+
 
   get 'admin', to: 'admin#index'
   get "home/index"

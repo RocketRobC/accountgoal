@@ -1,11 +1,20 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:completed, :show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:completed, :show, :edit, :update, :destroy, :encourage]
 
 
 
   def completed
     @goal.update_attributes(:complete => true, :completed_at => DateTime.now.beginning_of_day)
     redirect_to :back
+  end
+
+  def encourage
+    @encourage = Encouragement.create!(user: current_user, goal: @goal)
+    if @encourage.save
+      # EncouragementMailer.encouragement_received(current_user, @goal.id).deliver_now
+    else
+      flash[:warning] = "It's broken, you didn't really want to do that."
+    end
   end
 
   # GET /goals

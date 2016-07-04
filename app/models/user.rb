@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def initial_create_profile
-    create_profile!
+    create_profile! unless profile.present?
   end
 
   def follow!(other_user)
