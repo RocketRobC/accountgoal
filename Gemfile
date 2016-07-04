@@ -19,6 +19,7 @@ gem "groupdate"
 gem "pg"
 gem "chartkick"
 gem "active_median"
+gem 'yaml_db'
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
